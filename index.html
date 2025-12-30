@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEIE - Emergency Command Interface</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'command-bg': '#0B0F14',
+            'ai-cyan': '#00E5FF',
+            'alert-red': '#FF3B3B',
+            'warn-amber': '#FFC107',
+            'success-green': '#2ED573',
+            'muted-slate': '#7A8CA3',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0B0F14;
+      color: #EAEAEA;
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    .tactical-grid {
+      background-image: 
+        linear-gradient(rgba(122, 140, 163, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(122, 140, 163, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .scanline {
+      width: 100%;
+      height: 4px;
+      background: rgba(0, 229, 255, 0.03);
+      position: absolute;
+      top: 0;
+      animation: scan 8s linear infinite;
+      z-index: 100;
+      pointer-events: none;
+    }
+    @keyframes scan {
+      0% { top: 0; }
+      100% { top: 100%; }
+    }
+    .glow-cyan { box-shadow: 0 0 15px rgba(0, 229, 255, 0.4); }
+    .glow-red { box-shadow: 0 0 15px rgba(255, 59, 59, 0.4); }
+    .glow-text-cyan { text-shadow: 0 0 8px rgba(0, 229, 255, 0.6); }
+    
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: #0B0F14; }
+    ::-webkit-scrollbar-thumb { background: #1A1F26; border-radius: 4px; }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="tactical-grid">
+  <div class="scanline"></div>
+  <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

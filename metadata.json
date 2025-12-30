@@ -1,0 +1,8 @@
+{
+  "name": "LifeLine AI: Emergency Priority Routing",
+  "description": "An AI-powered emergency routing engine designed to minimize ambulance response times through intelligent traffic awareness and hospital load analysis.",
+  "requestFramePermissions": [
+    "geolocation",
+    "microphone"
+  ]
+}
